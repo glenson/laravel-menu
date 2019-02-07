@@ -65,7 +65,8 @@ class Builder
     public function add($title, $options = '')
     {
         $id = isset($options['id']) ? $options['id'] : $this->id();
-
+        $title = "<span>".trim($title)."</span>";
+        $options = array_merge($options, ['route' => $id]);
         $item = new Item($this, $id, $title, $options);
 
         $this->items->push($item);
